@@ -18,11 +18,17 @@ set(GLEW_PATH ${THIRD_PARTY_PATH}/glew)
 set(GLFW_PATH ${THIRD_PARTY_PATH}/glfw)
 set(RES_PATH ${SDK_ROOT_PATH}/Resources)
 
+# QT 资源自动编译选项
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+
+
 # Set project.
 project(${APP_NAME})
 
-# Set Visual Studio startup project.
-set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT ${APP_NAME})
+# # Set Visual Studio startup project.
+# set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT ${APP_NAME})
 
 # Define output directory.
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin/${APP_NAME})
@@ -41,7 +47,7 @@ set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
 set(BUILD_UTILS OFF CACHE BOOL "" FORCE)
 
 # Specify version of compiler.
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
@@ -53,6 +59,7 @@ elseif(CMAKE_EXE_LINKER_FLAGS STREQUAL "/machine:X86")
 else()
   message(FATAL_ERROR "[${APP_NAME}] Invalid linker flag ${CMAKE_EXE_LINKER_FLAGS}.")
 endif()
+
 # Detect compiler.
 if(MSVC_VERSION MATCHES 1800)
   # Visual Studio 2013
@@ -111,7 +118,7 @@ target_include_directories(Framework PUBLIC ${GLEW_PATH}/include)
 target_link_libraries(Framework Live2DCubismCore glew_s)
 
 # Find opengl libraries.
-find_package(OpenGL REQUIRED)
+find_package(OpenGL REQUIRED Qt5 COMPONENTS Widgets)
 
 # Make executable app.
 add_executable(${APP_NAME})
@@ -121,6 +128,7 @@ add_subdirectory(src)
 target_link_libraries(${APP_NAME}
   Framework
   glfw
+  Qt5::Widgets
   ${OPENGL_LIBRARIES}
   # Solve the MSVCRT confliction.
   debug -NODEFAULTLIB:libcmtd.lib

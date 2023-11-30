@@ -1,5 +1,3 @@
-#pragma once
-#include "ui_demo.h"
 #include <QMainWindow>
 
 class demo : public QMainWindow {
@@ -12,3 +10,14 @@ public:
 private:
     Ui_demo* ui;
 };
+demo::demo(QWidget* parent)
+    : QMainWindow(parent)
+    , ui(new Ui_demo)
+{
+    ui->setupUi(this);
+}
+
+demo::~demo()
+{
+    delete ui; 
+}

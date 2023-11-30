@@ -1326,12 +1326,12 @@ static int createNativeWindow(_GLFWwindow* window,
                                            (LPVOID) wndconfig);
 
     // Add
-    SetWindowLong(window->win32.handle, GWL_STYLE, WS_POPUP | WS_VISIBLE);
-    SetWindowLong(window->win32.handle, GWL_EXSTYLE, WS_EX_LAYERED);
-    const int mySetPosX = 0;
-    const int mySetPosY = 630;
-    SetWindowPos(window->win32.handle, HWND_TOPMOST, mySetPosX, mySetPosY, 0, 0, SWP_SHOWWINDOW | SWP_FRAMECHANGED);
-    SetLayeredWindowAttributes(window->win32.handle, RGB(0, 0, 0), 0, LWA_COLORKEY); //LWA ALPHA
+    // SetWindowLong(window->win32.handle, GWL_STYLE, WS_POPUP | WS_VISIBLE);
+    // SetWindowLong(window->win32.handle, GWL_EXSTYLE, WS_EX_LAYERED);
+    // const int mySetPosX = 0;
+    // const int mySetPosY = 630;
+    // SetWindowPos(window->win32.handle, HWND_TOPMOST, mySetPosX, mySetPosY, 0, 0, SWP_SHOWWINDOW | SWP_FRAMECHANGED);
+    // SetLayeredWindowAttributes(window->win32.handle, RGB(0, 0, 0), 0, LWA_COLORKEY); //LWA ALPHA
 
     free(wideTitle);
 

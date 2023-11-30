@@ -131,37 +131,37 @@ void LAppDelegate::Release()
 
 void LAppDelegate::Run()
 {
-    //メインループ
+    // 主循环
     while (glfwWindowShouldClose(_window) == GL_FALSE && !_isEnd)
     {
         int width, height;
         glfwGetWindowSize(LAppDelegate::GetInstance()->GetWindow(), &width, &height);
         if( (_windowWidth!=width || _windowHeight!=height) && width>0 && height>0)
         {
-            //AppViewの初期化
+            // AppView 的初始化
             _view->Initialize();
-            // スプライトサイズを再設定
+            // 重现设置尺寸
             _view->ResizeSprite();
-            // サイズを保存しておく
+            // 保存尺寸
             _windowWidth = width;
             _windowHeight = height;
 
-            // ビューポート変更
+            // 视端口变更
             glViewport(0, 0, width, height);
         }
 
-        // 時間更新
+        // 时间更新
         LAppPal::UpdateTime();
 
-        // 画面の初期化
+        // 画面初始化
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearDepth(1.0);
 
-        //描画更新
+        // 描画更新
         _view->Render();
 
-        // バッファの入れ替え
+        // 更换缓冲器
         glfwSwapBuffers(_window);
 
         // Poll for and process events
