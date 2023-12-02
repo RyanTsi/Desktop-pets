@@ -118,7 +118,7 @@ target_include_directories(Framework PUBLIC ${GLEW_PATH}/include)
 target_link_libraries(Framework Live2DCubismCore glew_s)
 
 # Find opengl libraries.
-find_package(OpenGL REQUIRED Qt5 COMPONENTS Widgets)
+find_package(OpenGL REQUIRED)
 
 # Make executable app.
 add_executable(${APP_NAME})
@@ -128,7 +128,6 @@ add_subdirectory(src)
 target_link_libraries(${APP_NAME}
   Framework
   glfw
-  Qt5::Widgets
   ${OPENGL_LIBRARIES}
   # Solve the MSVCRT confliction.
   debug -NODEFAULTLIB:libcmtd.lib
