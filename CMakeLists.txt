@@ -6,8 +6,10 @@ option(
   OFF
 )
 
-# Set app name.
+# Set app name version languages
 set(APP_NAME Demo)
+set(APP_VERSION 1.0.0)
+set(APP_LANGUAGES CXX)
 # Set directory paths.
 set(SDK_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 set(CORE_PATH ${SDK_ROOT_PATH}/Core)
@@ -17,20 +19,13 @@ set(STB_PATH ${THIRD_PARTY_PATH}/stb)
 set(GLEW_PATH ${THIRD_PARTY_PATH}/glew)
 set(GLFW_PATH ${THIRD_PARTY_PATH}/glfw)
 set(RES_PATH ${SDK_ROOT_PATH}/Resources)
-
-# QT 资源自动编译选项
+# set QT 资源自动编译选项
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
-
-
 # Set project.
-project(${APP_NAME})
-
-# # Set Visual Studio startup project.
-# set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT ${APP_NAME})
-
-# Define output directory.
+project(${APP_NAME} VERSION ${APP_VERSION} LANGUAGES ${APP_LANGUAGES})
+# set output 路径.
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin/${APP_NAME})
 # Set configuration (Release and Debug only).
 set(CMAKE_CONFIGURATION_TYPES Debug Release
@@ -38,20 +33,18 @@ set(CMAKE_CONFIGURATION_TYPES Debug Release
 )
 # Suppress generation of ZERO_CHECK project.
 set(CMAKE_SUPPRESS_REGENERATION ON)
-
 # Surpress GLEW and GLFW process.
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
 set(BUILD_UTILS OFF CACHE BOOL "" FORCE)
-
 # Specify version of compiler.
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Detect architecture.
+# 检测系统架构
 if(CMAKE_EXE_LINKER_FLAGS STREQUAL "/machine:x64")
   set(ARCH x86_64)
 elseif(CMAKE_EXE_LINKER_FLAGS STREQUAL "/machine:X86")
@@ -60,7 +53,7 @@ else()
   message(FATAL_ERROR "[${APP_NAME}] Invalid linker flag ${CMAKE_EXE_LINKER_FLAGS}.")
 endif()
 
-# Detect compiler.
+# 检测编译器
 if(MSVC_VERSION MATCHES 1800)
   # Visual Studio 2013
   set(COMPILER 120)
@@ -81,6 +74,7 @@ elseif(MSVC)
 else()
   message(FATAL_ERROR "[${APP_NAME}] Unsupported compiler used.")
 endif()
+
 # Detect core crt.
 if(CORE_CRL_MD)
   set(CRT MD)
@@ -119,20 +113,27 @@ target_link_libraries(Framework Live2DCubismCore glew_s)
 
 # Find opengl libraries.
 find_package(OpenGL REQUIRED)
+# Find qt libraries.
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+
 
 # Make executable app.
 add_executable(${APP_NAME})
 # Add source files.
 add_subdirectory(src)
+
 # Link libraries to app.
 target_link_libraries(${APP_NAME}
   Framework
   glfw
+  Qt${QT_VERSION_MAJOR}::Widgets
   ${OPENGL_LIBRARIES}
   # Solve the MSVCRT confliction.
   debug -NODEFAULTLIB:libcmtd.lib
   optimized -NODEFAULTLIB:libcmt.lib
 )
+
 # Specify include directories.
 target_include_directories(${APP_NAME} PRIVATE ${STB_PATH})
 # Build in multi-process.
@@ -152,20 +153,3 @@ set_target_properties(${APP_NAME} PROPERTIES
   VS_DEBUGGER_WORKING_DIRECTORY
     ${CMAKE_CURRENT_BINARY_DIR}/bin/${APP_NAME}/${CMAKE_CFG_INTDIR}
 )
-
-# You can change target that renderer draws by enabling following definition.
-#
-# * USE_RENDER_TARGET
-#   Renderer draws to target of LAppView.
-# * USE_MODEL_RENDER_TARGET
-#   Renderer draws to target of each LAppModel.
-# * default
-#   Renderer draws to default main framebuffer.
-#
-# INFO: USE_RENDER_TARGET has higher priority than USE_MODEL_RENDER_TARGET.
-#
-# target_compile_definitions(${APP_NAME}
-#   PRIVATE
-#     USE_RENDER_TARGET
-#     USE_MODEL_RENDER_TARGET
-# )
