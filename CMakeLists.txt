@@ -1,11 +1,10 @@
 cmake_minimum_required(VERSION 3.16)
 
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_INCLUDE_CURRENT_DIR OFF)
 # 设置名字 版本 所用语言
 set(APP_NAME Demo)
 set(APP_VERSION 1.0.0)
-set(APP_LANGUAGES CXX)
-project(${APP_NAME} VERSION ${APP_VERSION} LANGUAGES ${APP_LANGUAGES})
+project(${APP_NAME} VERSION ${APP_VERSION} LANGUAGES C CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -60,6 +59,9 @@ add_subdirectory(${FRAMEWORK_PATH} ${CMAKE_CURRENT_BINARY_DIR}/Framework)
 target_compile_definitions(Framework PUBLIC CSM_TARGET_WIN_GL)
 target_include_directories(Framework PUBLIC ${GLEW_PATH}/include)
 target_link_libraries(Framework Live2DCubismCore glew_s)
+
+# 添加头文件搜索路径
+include_directories(src/model)
 
 # 搜索 OpenGL QT
 find_package(OpenGL REQUIRED)
