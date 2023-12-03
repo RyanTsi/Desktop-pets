@@ -114,8 +114,8 @@ target_link_libraries(Framework Live2DCubismCore glew_s)
 # Find opengl libraries.
 find_package(OpenGL REQUIRED)
 # Find qt libraries.
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets OpenGLWidgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets OpenGLWidgets)
 
 
 # Make executable app.
@@ -128,6 +128,7 @@ target_link_libraries(${APP_NAME}
   Framework
   glfw
   Qt${QT_VERSION_MAJOR}::Widgets
+  Qt6::OpenGLWidgets
   ${OPENGL_LIBRARIES}
   # Solve the MSVCRT confliction.
   debug -NODEFAULTLIB:libcmtd.lib
