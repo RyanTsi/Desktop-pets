@@ -62,6 +62,8 @@ target_link_libraries(Framework Live2DCubismCore glew_s)
 
 # 添加头文件搜索路径
 include_directories(src/model)
+include_directories(src/qt)
+include_directories(src/ds)
 
 # 搜索 OpenGL QT
 find_package(OpenGL REQUIRED)

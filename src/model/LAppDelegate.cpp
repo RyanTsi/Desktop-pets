@@ -14,6 +14,8 @@
 #include "LAppDefine.hpp"
 #include "LAppLive2DManager.hpp"
 #include "LAppTextureManager.hpp"
+#include <QOpenGLWidget>
+#include <L2D_widget.hpp>
 
 using namespace Csm;
 using namespace std;
@@ -43,38 +45,10 @@ void LAppDelegate::ReleaseInstance()
     s_instance = NULL;
 }
 
-bool LAppDelegate::Initialize()
-{
-    if (DebugLogEnable)
-    {
+bool LAppDelegate::Initialize(L2D_widget * window) {
+    if (DebugLogEnable) {
         LAppPal::PrintLog("START");
     }
-
-    // GLFWの初期化
-    if (glfwInit() == GL_FALSE)
-    {
-        if (DebugLogEnable)
-        {
-            LAppPal::PrintLog("Can't initilize GLFW");
-        }
-        return GL_FALSE;
-    }
-
-    // Windowの生成_
-    _window = glfwCreateWindow(RenderTargetWidth, RenderTargetHeight, "SAMPLE", NULL, NULL);
-    if (_window == NULL)
-    {
-        if (DebugLogEnable)
-        {
-            LAppPal::PrintLog("Can't create GLFW window.");
-        }
-        glfwTerminate();
-        return GL_FALSE;
-    }
-
-    // Windowのコンテキストをカレントに設定
-    glfwMakeContextCurrent(_window);
-    glfwSwapInterval(1);
 
     if (glewInit() != GLEW_OK) {
         if (DebugLogEnable)
@@ -93,16 +67,12 @@ bool LAppDelegate::Initialize()
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    //コールバック関数の登録
-    glfwSetMouseButtonCallback(_window, EventHandler::OnMouseCallBack);
-    glfwSetCursorPosCallback(_window, EventHandler::OnMouseCallBack);
-
-    // ウィンドウサイズ記憶
-    int width, height;
-    glfwGetWindowSize(LAppDelegate::GetInstance()->GetWindow(), &width, &height);
+    int width = LAppDelegate::GetInstance()->GetWindow()->width();
+    int height = LAppDelegate::GetInstance()->GetWindow()->height();
     _windowWidth = width;
     _windowHeight = height;
-
+    _window = window;
+    
     //AppViewの初期化
     _view->Initialize();
 
@@ -115,9 +85,6 @@ bool LAppDelegate::Initialize()
 void LAppDelegate::Release()
 {
     // Windowの削除
-    glfwDestroyWindow(_window);
-
-    glfwTerminate();
 
     delete _textureManager;
     delete _view;
@@ -129,6 +96,38 @@ void LAppDelegate::Release()
     CubismFramework::Dispose();
 }
 
+void LAppDelegate::resize(int width,int height)
+{
+    if( (_windowWidth!=width || _windowHeight!=height) && width>0 && height>0)
+    {
+        //AppViewの初期化
+        _view->Initialize();
+        // スプライトサイズを再設定
+        //_view->ResizeSprite();
+        // サイズを保存しておく
+        _windowWidth = width;
+        _windowHeight = height;
+
+        // ビューポート変更
+        glViewport(0, 0, width, height);
+    }
+}
+
+void LAppDelegate::update()
+{
+    // 時間更新
+    LAppPal::UpdateTime();
+
+    // 画面の初期化
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClearDepth(1.0);
+
+    //描画更新
+    _view->Render();
+}
+
+#if 0
 void LAppDelegate::Run()
 {
     // 主循环
@@ -145,7 +144,6 @@ void LAppDelegate::Run()
             // 保存尺寸
             _windowWidth = width;
             _windowHeight = height;
-
             // 视端口变更
             glViewport(0, 0, width, height);
         }
@@ -172,6 +170,7 @@ void LAppDelegate::Run()
 
     LAppDelegate::ReleaseInstance();
 }
+#endif
 
 LAppDelegate::LAppDelegate():
     _cubismOption(),
@@ -212,7 +211,7 @@ void LAppDelegate::InitializeCubism()
 
     _view->InitializeSprite();
 }
-
+#if 0
 void LAppDelegate::OnMouseCallBack(GLFWwindow* window, int button, int action, int modify)
 {
     if (_view == NULL)
@@ -254,6 +253,46 @@ void LAppDelegate::OnMouseCallBack(GLFWwindow* window, double x, double y)
     }
 
     _view->OnTouchesMoved(_mouseX, _mouseY);
+}
+#endif
+
+void LAppDelegate::mousePressEvent(int x, int y)
+{
+    if (_view == NULL)
+    {
+        return;
+    }
+    _captured = true;
+    _view->OnTouchesBegan((float)x, (float)y);
+}
+void LAppDelegate::mouseReleaseEvent(int x, int y)
+{
+    if (_view == NULL)
+    {
+        return;
+    }
+
+    if (_captured)
+    {
+        _captured = false;
+        _view->OnTouchesEnded((float)x,(float)y);
+    }
+}
+
+void LAppDelegate::mouseMoveEvent(int x, int y)
+{
+    _mouseX = static_cast<float>(x);
+    _mouseY = static_cast<float>(y);
+
+    if (!_captured)
+    {
+        return;
+    }
+    if (_view == NULL)
+    {
+        return;
+    }
+    _view->OnTouchesMoved(x, y);
 }
 
 GLuint LAppDelegate::CreateShader()

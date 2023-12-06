@@ -6,9 +6,8 @@
  */
 
 #pragma once
-
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
+#include <QOpenGLWidget>
+#include "L2D_widget.hpp"
 #include "LAppAllocator.hpp"
 
 class LAppView;
@@ -38,7 +37,7 @@ public:
     /**
     * @brief   APPに必要なものを初期化する。
     */
-    bool Initialize();
+    bool Initialize(L2D_widget* window);
 
     /**
     * @brief   解放する。
@@ -48,8 +47,9 @@ public:
     /**
     * @brief   実行処理。
     */
-    void Run();
-
+    void resize(int width,int height);
+    void update();
+#if 0
     /**
     * @brief   OpenGL用 glfwSetMouseButtonCallback用関数。
     *
@@ -68,6 +68,11 @@ public:
     * @param[in]       y                 x座標
     */
     void OnMouseCallBack(GLFWwindow* window, double x, double y);
+#endif
+
+    void mousePressEvent(int x, int y);
+    void mouseReleaseEvent(int x, int y);
+    void mouseMoveEvent(int x, int y);
 
     /**
     * @brief シェーダーを登録する。
@@ -77,7 +82,7 @@ public:
     /**
     * @brief   Window情報を取得する。
     */
-    GLFWwindow* GetWindow() { return _window; }
+    L2D_widget* GetWindow() { return _window; }
 
     /**
     * @brief   View情報を取得する。
@@ -119,7 +124,7 @@ private:
 
     LAppAllocator _cubismAllocator;              ///< Cubism SDK Allocator
     Csm::CubismFramework::Option _cubismOption;  ///< Cubism SDK Option
-    GLFWwindow* _window;                         ///< OpenGL ウィンドウ
+    L2D_widget* _window;                         ///< OpenGL ウィンドウ
     LAppView* _view;                             ///< View情報
     bool _captured;                              ///< クリックしているか
     float _mouseX;                               ///< マウスX座標
@@ -129,25 +134,4 @@ private:
 
     int _windowWidth;                            ///< Initialize関数で設定したウィンドウ幅
     int _windowHeight;                           ///< Initialize関数で設定したウィンドウ高さ
-};
-
-class EventHandler
-{
-public:
-    /**
-    * @brief   glfwSetMouseButtonCallback用コールバック関数。
-    */
-    static void OnMouseCallBack(GLFWwindow* window, int button, int action, int modify)
-    {
-        LAppDelegate::GetInstance()->OnMouseCallBack(window, button, action, modify);
-    }
-
-    /**
-    * @brief   glfwSetCursorPosCallback用コールバック関数。
-    */
-    static void OnMouseCallBack(GLFWwindow* window, double x, double y)
-    {
-         LAppDelegate::GetInstance()->OnMouseCallBack(window, x, y);
-    }
-
 };

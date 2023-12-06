@@ -1,5 +1,5 @@
 target_sources(${APP_NAME}
-  PUBLIC
+  PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/LAppAllocator.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/LAppAllocator.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/LAppDefine.cpp
@@ -20,5 +20,7 @@ target_sources(${APP_NAME}
     ${CMAKE_CURRENT_SOURCE_DIR}/LAppView.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/TouchManager.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/TouchManager.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/L2D_widget.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/L2D_widget.cpp
 )
 

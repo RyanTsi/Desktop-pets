@@ -123,9 +123,8 @@ void LAppLive2DManager::OnTap(csmFloat32 x, csmFloat32 y)
 
 void LAppLive2DManager::OnUpdate() const
 {
-    int width, height;
-    glfwGetWindowSize(LAppDelegate::GetInstance()->GetWindow(), &width, &height);
-
+    int width = LAppDelegate::GetInstance()->GetWindow()->width();
+    int height = LAppDelegate::GetInstance()->GetWindow()->height();
     csmUint32 modelCount = _models.GetSize();
     for (csmUint32 i = 0; i < modelCount; ++i)
     {
