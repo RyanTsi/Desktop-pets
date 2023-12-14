@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SetInter</class>
+ <widget class="QWidget" name="SetInter">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>554</width>
+    <height>613</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="favorPushButton">
+         <property name="text">
+          <string>好感</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="moodPushButton">
+         <property name="text">
+          <string>心情</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="healthyPushButton">
+         <property name="text">
+          <string>健康</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="energyPushButton">
+         <property name="text">
+          <string>精力</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QStackedWidget" name="stackedWidget">
+       <property name="currentIndex">
+        <number>2</number>
+       </property>
+       <widget class="QWidget" name="favorPage">
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item>
+              <widget class="QLabel" name="levelLabel">
+               <property name="text">
+                <string>Level:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="showLevelLabel">
+               <property name="text">
+                <string>1</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <item>
+              <widget class="QLabel" name="experienceLabel">
+               <property name="text">
+                <string>经验条：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QProgressBar" name="experienceProgressBar">
+               <property name="value">
+                <number>32</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_7">
+             <item>
+              <widget class="QLabel" name="experienceValueLabel">
+               <property name="text">
+                <string>经验值：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="showExperienceValue">
+               <property name="text">
+                <string>34</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="healthyPage">
+        <layout class="QGridLayout" name="gridLayout_4">
+         <item row="0" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_8">
+             <item>
+              <widget class="QLabel" name="healthyStateLabel">
+               <property name="text">
+                <string>状态：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="showHealthyState">
+               <property name="text">
+                <string>健康</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_9">
+             <item>
+              <widget class="QLabel" name="isMedicineLabel">
+               <property name="text">
+                <string>是否吃药：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="boolMedicineLabel">
+               <property name="text">
+                <string>不需要</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_10">
+             <item>
+              <widget class="QLabel" name="goodTime">
+               <property name="text">
+                <string>生病好转时间：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="text">
+                <string>无</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="energyPage">
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="0" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QLabel" name="showEnergyLabel">
+               <property name="text">
+                <string>精力：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QProgressBar" name="energyProgressBar">
+               <property name="value">
+                <number>100</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <widget class="QLabel" name="showEnergyState">
+               <property name="text">
+                <string>精力状态：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="energyState">
+               <property name="text">
+                <string>专注</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QLabel" name="showBuffLabel">
+               <property name="text">
+                <string>Buff：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="buffState">
+               <property name="text">
+                <string>精力-1/2min，心情+1/2min</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="moodPage">
+        <layout class="QGridLayout" name="gridLayout_5">
+         <item row="0" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_13">
+             <item>
+              <widget class="QLabel" name="label_4">
+               <property name="text">
+                <string>心情值：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="moodValue">
+               <property name="text">
+                <string>40</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_12">
+             <item>
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>心情状态：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="moodState">
+               <property name="text">
+                <string>开心</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_11">
+             <item>
+              <widget class="QLabel" name="label_3">
+               <property name="text">
+                <string>心情Buff：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="moodBuff">
+               <property name="text">
+                <string>+20%</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
