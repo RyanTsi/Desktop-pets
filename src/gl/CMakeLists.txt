@@ -1,0 +1,19 @@
+target_sources(${APP_NAME}
+  PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/gl_widget.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/gl_widget.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/l2d_model.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/l2d_model.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/LAppDefine.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/LAppDefine.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/TextureManager.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/TextureManager.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/TouchManager.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/TouchManager.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/utils.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/l2dPal.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/gl_object_base.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/l2d.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/l2d.cpp
+)
+

@@ -1,0 +1,12 @@
+target_sources(${APP_NAME}
+  PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/app_content.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/app_content.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/app_msg_handler.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/app_msg_handler.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/app_param.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/app_param.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/app_native_ev_filter.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/app_native_ev_filter.h
+)
+
