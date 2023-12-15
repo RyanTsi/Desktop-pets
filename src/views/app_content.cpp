@@ -5,14 +5,14 @@
 AppContent::AppContent(QWidget *parent)
     : QWidget(parent)
 {
-    this->setWindowFlag(Qt::Tool);
-    this->setWindowFlag(Qt::FramelessWindowHint);
-    this->setAttribute(Qt::WA_TranslucentBackground);
-    this->setWindowFlag(Qt::WindowStaysOnTopHint);
-    this->setWindowFlag(Qt::NoDropShadowWindowHint);
+    // this->setWindowFlag(Qt::Tool);
+    // this->setWindowFlag(Qt::FramelessWindowHint);
+    // this->setAttribute(Qt::WA_TranslucentBackground);
+    // this->setWindowFlag(Qt::WindowStaysOnTopHint);
+    // this->setWindowFlag(Qt::NoDropShadowWindowHint);
     QPoint widget_pos;
     AppParam::getInstance().getParam("S$window/pos", widget_pos);
-    this->setGeometry(QRect(widget_pos, QSize(400, 300)));
+    this->setGeometry(QRect(widget_pos, QSize(600, 400)));
     AppParam::getInstance().setParam("D$window/center", this->geometry().center());
 
     AppMsgHandler::getInstance().bindSlot
@@ -44,7 +44,7 @@ void AppContent::trayRequestHide()
 
 void AppContent::trayRequestResetGeometry()
 {
-    this->setGeometry(0, 0, 400, 300);
+    this->setGeometry(0, 0, 100, 400);
     update();
 }
 

@@ -221,7 +221,7 @@ void GLObj_L2d::ModelDraw()
 {
     _model->Update();
     Csm::CubismMatrix44 projection;
-    projection.Scale(1.75f, 1.75f * static_cast<float>(_canvas_width) / static_cast<float>(_canvas_height));
+    projection.Scale(0.4, 0.4f * static_cast<float>(_canvas_width) / static_cast<float>(_canvas_height));
     _model->Draw(projection);
 }
 
