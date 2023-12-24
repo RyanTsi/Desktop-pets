@@ -1,0 +1,4 @@
+.vscode
+.qtc_clangd
+build
+CMakeLists.txt.user
