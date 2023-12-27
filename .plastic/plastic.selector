@@ -1,0 +1,4 @@
+repository "DeskPet@js-cai@cloud.cn"
+  path "/"
+    br "/main"
+    co "/main"
