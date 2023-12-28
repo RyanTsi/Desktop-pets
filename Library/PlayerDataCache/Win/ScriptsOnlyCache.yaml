@@ -2,7 +2,10 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - Drag
+    - Energy
     - ExpressionTest
+    - Favor
+    - FeedAndTouch
     - Live2D.Cubism.Core.CubismDrawable
     - Live2D.Cubism.Core.CubismMoc
     - Live2D.Cubism.Core.CubismModel
@@ -35,22 +38,40 @@ ScriptsOnlyBuild:
     - Live2D.Cubism.Rendering.Masking.CubismMaskController
     - Live2D.Cubism.Rendering.Masking.CubismMaskTexture
     - LookTargetTest
+    - MainButton
+    - Mood
     - WindowTransparent
     - initModel
     - loadModelPrefab
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.RiderScriptEditorData
     - Packages.Rider.Editor.UnitTesting.CallbackData
+    Unity.TextMeshPro.dll:
+    - TMPro.TMP_FontAsset
+    - TMPro.TMP_Settings
+    - TMPro.TMP_SpriteAsset
+    - TMPro.TMP_StyleSheet
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    UnityEngine.UI.dll:
+    - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
+    - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.Image
+    - UnityEngine.UI.Slider
+    - UnityEngine.UI.Text
   serializedClasses:
     Assembly-CSharp:
     - Live2D.Cubism.Framework.Expression.CubismExpressionData/SerializableExpressionParameter
@@ -61,6 +82,38 @@ ScriptsOnlyBuild:
     - Live2D.Cubism.Framework.Physics.CubismPhysicsParticle
     - Live2D.Cubism.Framework.Physics.CubismPhysicsRig
     - Live2D.Cubism.Framework.Physics.CubismPhysicsSubRig
+    Unity.TextMeshPro:
+    - TMPro.FaceInfo_Legacy
+    - TMPro.FontAssetCreationSettings
+    - TMPro.KerningTable
+    - TMPro.TMP_Character
+    - TMPro.TMP_FontFeatureTable
+    - TMPro.TMP_FontWeightPair
+    - TMPro.TMP_GlyphAdjustmentRecord
+    - TMPro.TMP_GlyphPairAdjustmentRecord
+    - TMPro.TMP_GlyphValueRecord
+    - TMPro.TMP_Sprite
+    - TMPro.TMP_SpriteCharacter
+    - TMPro.TMP_SpriteGlyph
+    - TMPro.TMP_Style
+    UnityEngine.CoreModule:
+    - UnityEngine.Events.ArgumentCache
+    - UnityEngine.Events.PersistentCallGroup
+    - UnityEngine.Events.PersistentListenerMode
+    UnityEngine.TextCoreFontEngineModule:
+    - UnityEngine.TextCore.FaceInfo
+    - UnityEngine.TextCore.Glyph
+    - UnityEngine.TextCore.GlyphMetrics
+    - UnityEngine.TextCore.GlyphRect
+    UnityEngine.UI:
+    - UnityEngine.UI.AnimationTriggers
+    - UnityEngine.UI.Button/ButtonClickedEvent
+    - UnityEngine.UI.ColorBlock
+    - UnityEngine.UI.FontData
+    - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+    - UnityEngine.UI.Navigation
+    - UnityEngine.UI.Slider/SliderEvent
+    - UnityEngine.UI.SpriteState
   methodsToPreserve: []
   sceneClasses:
     Assets/Scenes/SampleScene.unity:
@@ -101,82 +154,126 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1664}
+      Script: {instanceID: 1626}
     - Class: 114
-      Script: {instanceID: 1860}
+      Script: {instanceID: 1690}
     - Class: 114
-      Script: {instanceID: 2012}
+      Script: {instanceID: 1886}
     - Class: 114
-      Script: {instanceID: 2282}
+      Script: {instanceID: 2038}
     - Class: 114
-      Script: {instanceID: 2318}
+      Script: {instanceID: 2238}
     - Class: 114
-      Script: {instanceID: 2334}
+      Script: {instanceID: 2308}
     - Class: 114
-      Script: {instanceID: 2792}
+      Script: {instanceID: 2344}
     - Class: 114
-      Script: {instanceID: 2888}
+      Script: {instanceID: 2360}
     - Class: 114
-      Script: {instanceID: 2936}
+      Script: {instanceID: 2678}
     - Class: 114
-      Script: {instanceID: 2992}
+      Script: {instanceID: 2818}
     - Class: 114
-      Script: {instanceID: 3104}
+      Script: {instanceID: 2886}
     - Class: 114
-      Script: {instanceID: 3250}
+      Script: {instanceID: 2914}
     - Class: 114
-      Script: {instanceID: 3628}
+      Script: {instanceID: 2962}
     - Class: 114
-      Script: {instanceID: 3634}
+      Script: {instanceID: 3018}
     - Class: 114
-      Script: {instanceID: 3826}
+      Script: {instanceID: 3130}
     - Class: 114
-      Script: {instanceID: 3836}
+      Script: {instanceID: 3182}
     - Class: 114
-      Script: {instanceID: 4154}
+      Script: {instanceID: 3276}
     - Class: 114
-      Script: {instanceID: 4224}
+      Script: {instanceID: 3654}
     - Class: 114
-      Script: {instanceID: 4404}
+      Script: {instanceID: 3660}
     - Class: 114
-      Script: {instanceID: 4984}
+      Script: {instanceID: 3846}
     - Class: 114
-      Script: {instanceID: 5022}
+      Script: {instanceID: 3854}
     - Class: 114
-      Script: {instanceID: 5146}
+      Script: {instanceID: 3864}
     - Class: 114
-      Script: {instanceID: 5248}
+      Script: {instanceID: 4182}
     - Class: 114
-      Script: {instanceID: 5250}
+      Script: {instanceID: 4232}
     - Class: 114
-      Script: {instanceID: 5544}
+      Script: {instanceID: 4252}
     - Class: 114
-      Script: {instanceID: 5548}
+      Script: {instanceID: 4432}
     - Class: 114
-      Script: {instanceID: 5640}
+      Script: {instanceID: 4494}
     - Class: 114
-      Script: {instanceID: 6858}
+      Script: {instanceID: 5012}
     - Class: 114
-      Script: {instanceID: 7146}
+      Script: {instanceID: 5050}
     - Class: 114
-      Script: {instanceID: 7150}
+      Script: {instanceID: 5150}
     - Class: 114
-      Script: {instanceID: 7422}
+      Script: {instanceID: 5174}
     - Class: 114
-      Script: {instanceID: 7438}
+      Script: {instanceID: 5224}
     - Class: 114
-      Script: {instanceID: 7528}
+      Script: {instanceID: 5276}
     - Class: 114
-      Script: {instanceID: 7770}
+      Script: {instanceID: 5278}
     - Class: 114
-      Script: {instanceID: 8026}
+      Script: {instanceID: 5484}
     - Class: 114
-      Script: {instanceID: 8076}
+      Script: {instanceID: 5572}
+    - Class: 114
+      Script: {instanceID: 5576}
+    - Class: 114
+      Script: {instanceID: 5668}
+    - Class: 114
+      Script: {instanceID: 5804}
+    - Class: 114
+      Script: {instanceID: 6280}
+    - Class: 114
+      Script: {instanceID: 6886}
+    - Class: 114
+      Script: {instanceID: 7174}
+    - Class: 114
+      Script: {instanceID: 7178}
+    - Class: 114
+      Script: {instanceID: 7450}
+    - Class: 114
+      Script: {instanceID: 7466}
+    - Class: 114
+      Script: {instanceID: 7556}
+    - Class: 114
+      Script: {instanceID: 7800}
+    - Class: 114
+      Script: {instanceID: 8058}
+    - Class: 114
+      Script: {instanceID: 8108}
+    - Class: 114
+      Script: {instanceID: 26956}
+    - Class: 114
+      Script: {instanceID: 26972}
+    - Class: 114
+      Script: {instanceID: 26980}
+    - Class: 114
+      Script: {instanceID: 104114}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -647,6 +744,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Flow.dll
     namespaceName: Unity.VisualScripting
     className: ScriptGraphAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 1ca07b0e25ccde4eede409c84394c82e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MainButton
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1279,6 +1382,12 @@ ScriptsOnlyBuild:
     className: UnityOnParticleCollisionMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 854b7635c7b0648d996a510ca94ead21
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CircularProgressBar
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
@@ -1319,6 +1428,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: Live2D.Cubism.Framework.MouthMovement
     className: CubismAutoMouthInput
+  - hash:
+      serializedVersion: 2
+      Hash: 4299e6d18a08e5e112a749a217c1f318
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ClassicProgressBar
   - hash:
       serializedVersion: 2
       Hash: 8220b46879dc5e37db1b940c938f5744
@@ -1373,6 +1488,30 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: Live2D.Cubism.Framework.HarmonicMotion
     className: CubismHarmonicMotionController
+  - hash:
+      serializedVersion: 2
+      Hash: 39d8b80fea547b992389a08b2d527ba8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Mood
+  - hash:
+      serializedVersion: 2
+      Hash: 9ee51ecb2184c87eaf6001a4041fcc54
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Energy
+  - hash:
+      serializedVersion: 2
+      Hash: 540ef95f69b6af759f59f7d7865841a4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Favor
+  - hash:
+      serializedVersion: 2
+      Hash: 4b602ef479b5d768b3d68fad8ddf9372
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FeedAndTouch
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

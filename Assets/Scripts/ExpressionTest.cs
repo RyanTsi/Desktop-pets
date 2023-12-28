@@ -8,9 +8,12 @@ public class ExpressionTest : MonoBehaviour
     private bool isPlayExpression = false;
     private int initIndex = -1;
     private int index;
+
+    private int temp;
     // Start is called before the first frame update
     void Start()
     {
+        temp = PlayerPrefs.GetInt("exp");
         expressionController = GetComponent<CubismExpressionController>();
     }
 
@@ -205,7 +208,13 @@ public class ExpressionTest : MonoBehaviour
         {
             index = 47;
             StartCoroutine(PlayExpression(index));
+        }else if (temp != Favor.exp)
+        {
+            index = 53;
+            StartCoroutine(PlayExpression(index));
+            temp = Favor.exp;
         }
+        
         
     }
 

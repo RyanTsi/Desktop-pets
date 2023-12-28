@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Random = System.Random;
+using Random = UnityEngine.Random;
 
-public class Action : MonoBehaviour
+
+public class FeedAndTouch : MonoBehaviour
 {
     public Button touchButton;
 
@@ -13,22 +14,74 @@ public class Action : MonoBehaviour
 
     public static int index;
 
-    private int value;
+    public static int value;
     private DateTime lastTime;
+    private DateTime today;
+    private DateTime lastTimeHour;
     // Start is called before the first frame update
     void Start()
     {
+        lastTime = DateTime.Now;
+        lastTimeHour = new DateTime(2023, 12, 28, 00, 00, 00);
         touchButton.onClick.AddListener(touchAction);
+        feedButton.onClick.AddListener(feedAction);
+        if (PlayerPrefs.HasKey("Day"))
+        {
+            DateTime temp = DateTime.ParseExact(
+                PlayerPrefs.GetString("Day"), "MM/dd/yyyy", null);
+            if (DateTime.Now.Subtract(temp).Duration().TotalDays >= 1)
+            {
+                PlayerPrefs.SetString("Day",DateTime.Now.ToString("MM/dd/yyyy"));
+                PlayerPrefs.SetInt("index",0);
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetString("Day",DateTime.Now.ToString("MM/dd/yyyy"));
+            
+        }
+
+        if (PlayerPrefs.HasKey("index"))
+        {
+            index = PlayerPrefs.GetInt("index");
+        }
+        else 
+        {
+            PlayerPrefs.SetInt("index",0);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (DateTime.Now.Subtract(lastTime).Duration().TotalSeconds > 3.0f)
+        {
+            touchButton.enabled = true;
+        }
+
+        if (DateTime.Now.Subtract(lastTimeHour).Duration().TotalHours >=1f&&index<6)
+        {
+            feedButton.enabled = true;
+        }
     }
 
-    public static void touchAction()
+    private void touchAction()
     {
-        var random = new Random();
+        Debug.Log("add"+value.ToString());
+        value = Mathf.CeilToInt(Random.Range(1, 4)*Mood.magnification);
+        Favor.addExp(value);
+        touchButton.enabled = false;
+        lastTime = DateTime.Now;
+    }
+
+    private void feedAction()
+    {
+        Debug.Log("add"+value.ToString());
+        index++;
+        PlayerPrefs.SetInt("index",index);
+        value = Mathf.CeilToInt(Random.Range(8, 21) * Mood.magnification);
+        Favor.addExp(value);
+        feedButton.enabled = false;
+        lastTimeHour = DateTime.Now;
     }
 }
