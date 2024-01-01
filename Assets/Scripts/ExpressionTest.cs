@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Live2D.Cubism.Framework.Expression;
+using UnityEngine.EventSystems;
 public class ExpressionTest : MonoBehaviour
 {
     private CubismExpressionController expressionController;
-    private bool isPlayExpression = false;
+    public static bool isPlayExpression = false;
     private int initIndex = -1;
     private int index;
 
@@ -200,7 +201,7 @@ public class ExpressionTest : MonoBehaviour
         {
             index = 44;
             StartCoroutine(PlayExpression(index));
-        }else if (Input.GetMouseButton(0) && !isPlayExpression)
+        }else if (Input.GetMouseButton(0) && !isPlayExpression&&!EventSystem.current.IsPointerOverGameObject())
         {
             index = 46;
             StartCoroutine(PlayExpression(index));
@@ -208,13 +209,25 @@ public class ExpressionTest : MonoBehaviour
         {
             index = 47;
             StartCoroutine(PlayExpression(index));
-        }else if (temp != Favor.exp)
+        }else if (temp != Favor.exp&&!isPlayExpression)
+        {
+            index = 51;
+            StartCoroutine(PlayAddExp(index));
+            temp = Favor.exp;
+        }else if (Energy.energyNum < 15 && Energy.energyNum >= 5&&!isPlayExpression)
+        {
+            index = 52;
+            StartCoroutine(PlayYun(index));
+        }else if (Energy.energyNum < 5 && Energy.energyNum >= 0)
         {
             index = 53;
-            StartCoroutine(PlayExpression(index));
-            temp = Favor.exp;
+            isPlayExpression = true;
         }
-        
+        else if (Energy.energyNum >= 5 && isPlayExpression&&index !=-1)
+        {
+            index = -1;
+            isPlayExpression = false;
+        }
         
     }
 
@@ -227,4 +240,23 @@ public class ExpressionTest : MonoBehaviour
         expressionController.CurrentExpressionIndex = initIndex;
         isPlayExpression = false;
     }
+    IEnumerator PlayAddExp(int num)
+    {
+        isPlayExpression = true;
+        expressionController.CurrentExpressionIndex = num;
+        yield return new WaitForSecondsRealtime(1f);
+        
+        expressionController.CurrentExpressionIndex = initIndex;
+        isPlayExpression = false;
+    }
+    IEnumerator PlayYun(int num)
+    {
+        isPlayExpression = true;
+        expressionController.CurrentExpressionIndex = num;
+        yield return new WaitForSecondsRealtime(5f);
+        
+        expressionController.CurrentExpressionIndex = initIndex;
+        isPlayExpression = false;
+    }
+    
 }

@@ -18,6 +18,36 @@ public class Mode : MonoBehaviour
     void Start()
     {
         cubismMotionController = GetComponent<CubismMotionController>();
+        if (statusDrop.value == 1)
+        {
+            this.gameObject.GetComponent<ExpressionTest>().enabled = false;
+            this.gameObject.GetComponent<CubismLookController>().enabled = false;
+            // GetComponent<CubismExpressionController>().CurrentExpressionIndex = 
+            cubismMotionController.PlayAnimation(sleepAnimationClip,isLoop:true);
+
+            gameObject.GetComponent<FeedAndTouch>().enabled = false;
+        }
+        //常态
+        //所有功能正常使用
+        else if(statusDrop.value == 2)
+        {
+            cubismMotionController.StopAllAnimation();
+            this.gameObject.GetComponent<ExpressionTest>().enabled = true;
+            this.gameObject.GetComponent<CubismLookController>().enabled = true;
+            // GetComponent<CubismExpressionController>().CurrentExpressionIndex = 
+            // cubismMotionController.PlayAnimation(sceneAnimationClip,isLoop:true);
+            gameObject.GetComponent<FeedAndTouch>().enabled = true;
+        }
+        //专注模式
+        //没有目光追踪
+        //可以对表情反馈
+        else
+        {
+            this.gameObject.GetComponent<ExpressionTest>().enabled = true;
+            this.gameObject.GetComponent<CubismLookController>().enabled = false;
+            cubismMotionController.StopAllAnimation();
+            gameObject.GetComponent<FeedAndTouch>().enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -32,8 +62,8 @@ public class Mode : MonoBehaviour
             this.gameObject.GetComponent<CubismLookController>().enabled = false;
             // GetComponent<CubismExpressionController>().CurrentExpressionIndex = 
             cubismMotionController.PlayAnimation(sleepAnimationClip,isLoop:true);
-            feedButton.enabled = true;
-            touchButton.enabled = true;
+
+            gameObject.GetComponent<FeedAndTouch>().enabled = false;
         }
         //常态
         //所有功能正常使用
@@ -44,20 +74,17 @@ public class Mode : MonoBehaviour
             this.gameObject.GetComponent<CubismLookController>().enabled = true;
             // GetComponent<CubismExpressionController>().CurrentExpressionIndex = 
             // cubismMotionController.PlayAnimation(sceneAnimationClip,isLoop:true);
-            ExpressionTest.isPlayExpression = false;
-            feedButton.enabled = true;
-            touchButton.enabled = true;
+            gameObject.GetComponent<FeedAndTouch>().enabled = true;
         }
         //专注模式
         //没有目光追踪
-        //同睡觉，但没有睡觉动画
+        //可以对表情反馈
         else
         {
-            this.gameObject.GetComponent<ExpressionTest>().enabled = false;
+            this.gameObject.GetComponent<ExpressionTest>().enabled = true;
             this.gameObject.GetComponent<CubismLookController>().enabled = false;
-            feedButton.enabled = false;
-            touchButton.enabled = false;
             cubismMotionController.StopAllAnimation();
+            gameObject.GetComponent<FeedAndTouch>().enabled = false;
         }
     }
 }

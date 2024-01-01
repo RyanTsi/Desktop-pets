@@ -32,6 +32,7 @@ public class FeedAndTouch : MonoBehaviour
             if (DateTime.Now.Subtract(temp).Duration().TotalDays >= 1)
             {
                 PlayerPrefs.SetString("Day",DateTime.Now.ToString("MM/dd/yyyy"));
+                PlayerPrefs.SetFloat("moodValue",Random.Range(-100f,100f));
                 PlayerPrefs.SetInt("index",0);
             }
         }
@@ -67,8 +68,8 @@ public class FeedAndTouch : MonoBehaviour
 
     private void touchAction()
     {
-        Debug.Log("add"+value.ToString());
         value = Mathf.CeilToInt(Random.Range(1, 4)*Mood.magnification);
+        Debug.Log("add:"+value);
         Favor.addExp(value);
         touchButton.enabled = false;
         lastTime = DateTime.Now;
@@ -76,10 +77,11 @@ public class FeedAndTouch : MonoBehaviour
 
     private void feedAction()
     {
-        Debug.Log("add"+value.ToString());
+        
         index++;
         PlayerPrefs.SetInt("index",index);
         value = Mathf.CeilToInt(Random.Range(8, 21) * Mood.magnification);
+        Debug.Log("add:"+value);
         Favor.addExp(value);
         feedButton.enabled = false;
         lastTimeHour = DateTime.Now;

@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public class Energy : MonoBehaviour
 {
+    public Dropdown chooseStatus;
     public Slider energyValue;
 
     public Text energyStatus;
@@ -32,7 +33,14 @@ public class Energy : MonoBehaviour
             PlayerPrefs.SetInt("energyValue",100);
         }
         lastTime = DateTime.Now;
-        status = Random.Range(0, 3);
+        // status = Random.Range(0, 3);
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        status = chooseStatus.value;
         if (status == 0)
         {
             energySta = "FOCUS";
@@ -44,15 +52,10 @@ public class Energy : MonoBehaviour
         }
         else
         {
-            energySta = "OTHER";
+            energySta = "NORMAL";
             energyBuff.text = "-1/5min";
         }
         energyStatus.text = energySta;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         if (status == 0)
         {
             if (DateTime.Now.Subtract(lastTime).Duration().TotalMinutes == 2.0f)

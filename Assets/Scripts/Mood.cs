@@ -31,7 +31,7 @@ public class Mood : MonoBehaviour
         changeMoodType();
         moodText.text = moodValue.ToString("f2");
         moodStatus.text = moodType;
-        moodBuff.text = (magnification * 100).ToString()+"%";
+        moodBuff.text = (magnification * 100)+"%";
     }
     void Update()
     {

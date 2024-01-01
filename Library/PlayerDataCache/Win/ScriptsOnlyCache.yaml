@@ -23,14 +23,17 @@ ScriptsOnlyBuild:
     - Live2D.Cubism.Framework.Expression.CubismExpressionController
     - Live2D.Cubism.Framework.Expression.CubismExpressionData
     - Live2D.Cubism.Framework.Expression.CubismExpressionList
+    - Live2D.Cubism.Framework.HarmonicMotion.CubismHarmonicMotionController
+    - Live2D.Cubism.Framework.HarmonicMotion.CubismHarmonicMotionParameter
     - Live2D.Cubism.Framework.LookAt.CubismLookController
     - Live2D.Cubism.Framework.LookAt.CubismLookParameter
+    - Live2D.Cubism.Framework.Motion.CubismMotionController
     - Live2D.Cubism.Framework.MotionFade.CubismFadeController
     - Live2D.Cubism.Framework.MotionFade.CubismFadeMotionData
+    - Live2D.Cubism.Framework.MotionFade.CubismFadeMotionList
     - Live2D.Cubism.Framework.MotionFade.CubismFadeStateObserver
     - Live2D.Cubism.Framework.Physics.CubismPhysicsController
     - Live2D.Cubism.Framework.Pose.CubismPoseController
-    - Live2D.Cubism.Framework.Raycasting.CubismRaycastable
     - Live2D.Cubism.Rendering.CubismPartColorsEditor
     - Live2D.Cubism.Rendering.CubismRenderController
     - Live2D.Cubism.Rendering.CubismRenderer
@@ -39,10 +42,10 @@ ScriptsOnlyBuild:
     - Live2D.Cubism.Rendering.Masking.CubismMaskTexture
     - LookTargetTest
     - MainButton
+    - Mode
     - Mood
+    - Timing
     - WindowTransparent
-    - initModel
-    - loadModelPrefab
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.RiderScriptEditorData
     - Packages.Rider.Editor.UnitTesting.CallbackData
@@ -54,10 +57,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -68,10 +69,16 @@ ScriptsOnlyBuild:
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.Dropdown
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.InputField
+    - UnityEngine.UI.Mask
+    - UnityEngine.UI.ScrollRect
+    - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
+    - UnityEngine.UI.Toggle
   serializedClasses:
     Assembly-CSharp:
     - Live2D.Cubism.Framework.Expression.CubismExpressionData/SerializableExpressionParameter
@@ -109,11 +116,20 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.AnimationTriggers
     - UnityEngine.UI.Button/ButtonClickedEvent
     - UnityEngine.UI.ColorBlock
+    - UnityEngine.UI.Dropdown/DropdownEvent
+    - UnityEngine.UI.Dropdown/OptionData
+    - UnityEngine.UI.Dropdown/OptionDataList
     - UnityEngine.UI.FontData
+    - UnityEngine.UI.InputField/EndEditEvent
+    - UnityEngine.UI.InputField/OnChangeEvent
+    - UnityEngine.UI.InputField/SubmitEvent
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
     - UnityEngine.UI.Navigation
+    - UnityEngine.UI.ScrollRect/ScrollRectEvent
+    - UnityEngine.UI.Scrollbar/ScrollEvent
     - UnityEngine.UI.Slider/SliderEvent
     - UnityEngine.UI.SpriteState
+    - UnityEngine.UI.Toggle/ToggleEvent
   methodsToPreserve: []
   sceneClasses:
     Assets/Scenes/SampleScene.unity:
@@ -143,6 +159,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 91
@@ -158,17 +178,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1690}
     - Class: 114
-      Script: {instanceID: 1886}
+      Script: {instanceID: 1782}
     - Class: 114
-      Script: {instanceID: 2038}
+      Script: {instanceID: 1888}
     - Class: 114
-      Script: {instanceID: 2238}
+      Script: {instanceID: 2040}
     - Class: 114
-      Script: {instanceID: 2308}
+      Script: {instanceID: 2240}
     - Class: 114
-      Script: {instanceID: 2344}
+      Script: {instanceID: 2310}
     - Class: 114
-      Script: {instanceID: 2360}
+      Script: {instanceID: 2316}
+    - Class: 114
+      Script: {instanceID: 2346}
+    - Class: 114
+      Script: {instanceID: 2362}
     - Class: 114
       Script: {instanceID: 2678}
     - Class: 114
@@ -178,87 +202,105 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2914}
     - Class: 114
-      Script: {instanceID: 2962}
+      Script: {instanceID: 2934}
     - Class: 114
       Script: {instanceID: 3018}
     - Class: 114
-      Script: {instanceID: 3130}
+      Script: {instanceID: 3128}
     - Class: 114
-      Script: {instanceID: 3182}
+      Script: {instanceID: 3180}
     - Class: 114
-      Script: {instanceID: 3276}
+      Script: {instanceID: 3272}
     - Class: 114
-      Script: {instanceID: 3654}
+      Script: {instanceID: 3522}
     - Class: 114
-      Script: {instanceID: 3660}
+      Script: {instanceID: 3650}
     - Class: 114
-      Script: {instanceID: 3846}
+      Script: {instanceID: 3656}
     - Class: 114
-      Script: {instanceID: 3854}
+      Script: {instanceID: 3842}
     - Class: 114
-      Script: {instanceID: 3864}
+      Script: {instanceID: 3850}
     - Class: 114
-      Script: {instanceID: 4182}
+      Script: {instanceID: 3860}
     - Class: 114
-      Script: {instanceID: 4232}
+      Script: {instanceID: 3980}
     - Class: 114
-      Script: {instanceID: 4252}
+      Script: {instanceID: 4176}
     - Class: 114
-      Script: {instanceID: 4432}
+      Script: {instanceID: 4226}
     - Class: 114
-      Script: {instanceID: 4494}
+      Script: {instanceID: 4246}
     - Class: 114
-      Script: {instanceID: 5012}
+      Script: {instanceID: 4426}
     - Class: 114
-      Script: {instanceID: 5050}
+      Script: {instanceID: 4488}
     - Class: 114
-      Script: {instanceID: 5150}
+      Script: {instanceID: 5004}
     - Class: 114
-      Script: {instanceID: 5174}
+      Script: {instanceID: 5042}
     - Class: 114
-      Script: {instanceID: 5224}
+      Script: {instanceID: 5090}
     - Class: 114
-      Script: {instanceID: 5276}
+      Script: {instanceID: 5142}
     - Class: 114
-      Script: {instanceID: 5278}
+      Script: {instanceID: 5166}
     - Class: 114
-      Script: {instanceID: 5484}
+      Script: {instanceID: 5216}
     - Class: 114
-      Script: {instanceID: 5572}
+      Script: {instanceID: 5268}
     - Class: 114
-      Script: {instanceID: 5576}
+      Script: {instanceID: 5288}
     - Class: 114
-      Script: {instanceID: 5668}
+      Script: {instanceID: 5474}
     - Class: 114
-      Script: {instanceID: 5804}
+      Script: {instanceID: 5556}
     - Class: 114
-      Script: {instanceID: 6280}
+      Script: {instanceID: 5562}
     - Class: 114
-      Script: {instanceID: 6886}
+      Script: {instanceID: 5566}
     - Class: 114
-      Script: {instanceID: 7174}
+      Script: {instanceID: 5792}
     - Class: 114
-      Script: {instanceID: 7178}
+      Script: {instanceID: 6008}
     - Class: 114
-      Script: {instanceID: 7450}
+      Script: {instanceID: 6270}
     - Class: 114
-      Script: {instanceID: 7466}
+      Script: {instanceID: 6278}
     - Class: 114
-      Script: {instanceID: 7556}
+      Script: {instanceID: 6874}
     - Class: 114
-      Script: {instanceID: 7800}
+      Script: {instanceID: 7060}
     - Class: 114
-      Script: {instanceID: 8058}
+      Script: {instanceID: 7162}
     - Class: 114
-      Script: {instanceID: 8108}
+      Script: {instanceID: 7166}
     - Class: 114
-      Script: {instanceID: 26956}
+      Script: {instanceID: 7344}
     - Class: 114
-      Script: {instanceID: 26972}
+      Script: {instanceID: 7354}
     - Class: 114
-      Script: {instanceID: 26980}
+      Script: {instanceID: 7440}
     - Class: 114
-      Script: {instanceID: 104114}
+      Script: {instanceID: 7456}
+    - Class: 114
+      Script: {instanceID: 7546}
+    - Class: 114
+      Script: {instanceID: 7790}
+    - Class: 114
+      Script: {instanceID: 8048}
+    - Class: 114
+      Script: {instanceID: 8084}
+    - Class: 114
+      Script: {instanceID: 8100}
+    - Class: 114
+      Script: {instanceID: 8140}
+    - Class: 114
+      Script: {instanceID: 26268}
+    - Class: 114
+      Script: {instanceID: 26270}
+    - Class: 114
+      Script: {instanceID: 27138}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -318,6 +360,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: LayoutElement
+  - hash:
+      serializedVersion: 2
+      Hash: 39d8b80fea547b992389a08b2d527ba8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Mood
   - hash:
       serializedVersion: 2
       Hash: 6bc76e17f0d5e93f3eea7f5a2fe227f3
@@ -444,12 +492,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnBecameVisibleMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 08a2681702ccd9579d6caf19dfdcae48
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: MotionTest
   - hash:
       serializedVersion: 2
       Hash: cc4274b586df3c02688bac01b88bd16c
@@ -626,12 +668,6 @@ ScriptsOnlyBuild:
     className: UnityOnMouseDownMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 2ff1f52e1be9c063197e1f3c600a43a4
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: MotionPlayer
-  - hash:
-      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -776,12 +812,6 @@ ScriptsOnlyBuild:
     className: UnityOnPointerExitMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ParameterLaterUpdate
-  - hash:
-      serializedVersion: 2
       Hash: aba7b2852ef61d175dd9602e7723d5e5
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -894,12 +924,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnCancelMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 3cbe666ec9286af7a00a01dc706e2ee4
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: DragFullScreen
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1022,12 +1046,6 @@ ScriptsOnlyBuild:
     className: CubismRenderer
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: loadModelPrefab
-  - hash:
-      serializedVersion: 2
       Hash: 486514c75f14c4953f15a930531ea5d5
     assemblyName: Assembly-CSharp.dll
     namespaceName: Live2D.Cubism.Framework.HarmonicMotion
@@ -1064,16 +1082,16 @@ ScriptsOnlyBuild:
     className: Text
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: CubismHitTest
-  - hash:
-      serializedVersion: 2
       Hash: 04d63486da11518562724078a21c9576
     assemblyName: Assembly-CSharp.dll
     namespaceName: Live2D.Cubism.Samples.AsyncBenchmark
     className: ModelSpawner
+  - hash:
+      serializedVersion: 2
+      Hash: 4b602ef479b5d768b3d68fad8ddf9372
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FeedAndTouch
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1098,12 +1116,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.State.dll
     namespaceName: Unity.VisualScripting
     className: StateGraphAsset
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: initModel
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1142,6 +1154,12 @@ ScriptsOnlyBuild:
     className: RaycastHitDisplay
   - hash:
       serializedVersion: 2
+      Hash: aaf4d94ab1e15fd954f63fbf548fce04
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Energy
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
@@ -1158,12 +1176,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: StandaloneInputModule
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: JsonTest
   - hash:
       serializedVersion: 2
       Hash: f7858108331b563fb41b80b729297acd
@@ -1352,6 +1364,12 @@ ScriptsOnlyBuild:
     className: ControlTrack
   - hash:
       serializedVersion: 2
+      Hash: 637c959b54b7fc05e33c7503b1ec537f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Mode
+  - hash:
+      serializedVersion: 2
       Hash: 040dd48e3a027d5424519a5fa2009df4
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -1472,6 +1490,12 @@ ScriptsOnlyBuild:
     className: CubismMotionPreview
   - hash:
       serializedVersion: 2
+      Hash: 540ef95f69b6af759f59f7d7865841a4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Favor
+  - hash:
+      serializedVersion: 2
       Hash: 34885155ee0e38910e63694e21151fa5
     assemblyName: Assembly-CSharp.dll
     namespaceName: Live2D.Cubism.Framework.MotionFade
@@ -1490,28 +1514,10 @@ ScriptsOnlyBuild:
     className: CubismHarmonicMotionController
   - hash:
       serializedVersion: 2
-      Hash: 39d8b80fea547b992389a08b2d527ba8
+      Hash: a10ea0fde5d58c089062198dd5cecc46
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: Mood
-  - hash:
-      serializedVersion: 2
-      Hash: 9ee51ecb2184c87eaf6001a4041fcc54
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Energy
-  - hash:
-      serializedVersion: 2
-      Hash: 540ef95f69b6af759f59f7d7865841a4
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Favor
-  - hash:
-      serializedVersion: 2
-      Hash: 4b602ef479b5d768b3d68fad8ddf9372
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: FeedAndTouch
+    className: Timing
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
